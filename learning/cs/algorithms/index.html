@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Learning algorithms &middot; Karolis Misiunas</title>
+
+	
+		<link rel="stylesheet" href="/css/style.css">
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-4830476-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+	
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+
+
+	
+	<link href="" rel="alternate" type="application/rss+xml" title="Karolis Misiunas" />
+
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+  				{left: "$$", right: "$$", display: true},
+  				{left: "$", right: "$", display: false},
+			]
+        });
+	});
+	</script>
+	
+</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">
+					<span class="icon-K-medium"></span>
+					Karolis Misiunas</h2>
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="/about/">
+                
+                <span>About</span>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="/">
+                
+                <span>Thought Sketches</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+
+<div class="toc">
+  
+
+  <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#concepts">Concepts</a></li>
+        <li><a href="#generalised-algorithm">Generalised Algorithm</a></li>
+        <li><a href="#example-n-queens">Example: n queens</a></li>
+        <li><a href="#example-sum-subsets">Example: sum subsets</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#generalised-algorithm-1">Generalised algorithm</a></li>
+    <li><a href="#example-filling-blocks">Example: filling blocks</a></li>
+  </ul>
+</nav>
+
+  <ul class="toc-top">
+    <li><a href="#">&#10098; Back to top &#10099;</a></li>
+  </ul>
+</div>
+
+
+        
+
+<main>
+	<div class="post">
+		<h1 class="post-title">Learning algorithms</h1>
+<div class="post-line"></div>
+
+		
+
+		<h1 id="backtracking-1">Backtracking [1]</h1>
+<p>Backtracking is a technique used to build up to a solution to a  problem incrementally. These &ldquo;partial solutions&rdquo; can be phrased in terms  of a sequence of decisions. Once it is determined that a &ldquo;partial  solution&rdquo; is not viable (i.e. no subsequent decision can convert it into  a solution) then the backtracking algorithm retraces its step to the  last viable &ldquo;partial solution&rdquo; and tries again.</p>
+<p>Visualizing the decisions as a tree, backtracking has many of the  same properties of depth-first search. The difference is that  depth-first search will guarantee that it visits every node until it  finds a solution, whereas backtracking doesn&rsquo;t visit branches that are  not viable.</p>
+<p>Because backtracking breaks problems into smaller subproblems, it is  often combined with dynamic programming, or a divide-and-conquer  approach.</p>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><strong>State:</strong>  A &ldquo;partial solution&rdquo; to the problem.</li>
+<li><strong>Rejection criterion:</strong> A function that rejects a  partial solution as &ldquo;unrecoverable&rdquo;. i. e. no sequence of subsequent  decisions can turn this state into a solution. Without rejection  criteria, backtracking is the same as depth-first search.</li>
+<li><strong>Viable:</strong> A state that may still lead to a solution.  This reflects what is known &ldquo;at this stage&rdquo;. All states that fail the  rejection criteria are not viable. If we have a state that is initially  viable, and find that all paths to leaves eventually terminate at a  state that fail the rejection criteria, the state will become  non-viable.</li>
+<li><strong>Heuristic:</strong> Backtracking will (eventually) look at  all the different viable nodes by recursively applying all the possible  decisions. A heuristic is a quick way of ordering which decisions are  likely to be the best ones at each stage, so that they get evaluated  first. The goal is to find a solution early (if one exists).</li>
+<li><strong>Pruning:</strong> The concept of determining that there are no nodes / states along a particular branch, so it is not worth visiting those nodes.</li>
+</ul>
+<h3 id="generalised-algorithm">Generalised Algorithm</h3>
+<p>In the algorithms below, it is assumed that each decision is  irreversible, so there is only one path to each state. If modeling a  game like chess, you would have to be more careful, as it is possible to  arrive at the same state multiple different ways. If it is possible to  reach each state multiple ways, then we would also need to keep track of  which states we had already visited.</p>
+<p>A recursive implementation of a backtracking algorithm takes the general form</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">doBacktrack</span>( current ):
+    <span style="color:#007020;font-weight:bold">if</span> current <span style="color:#007020;font-weight:bold">is</span> a solution:
+        <span style="color:#007020;font-weight:bold">return</span> current
+    <span style="color:#007020;font-weight:bold">for</span> each decision d <span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">current</span>:
+        new_state <span style="color:#666">&lt;-</span> state obtained <span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">current</span> <span style="color:#0e84b5;font-weight:bold">by</span> <span style="color:#0e84b5;font-weight:bold">making</span> <span style="color:#0e84b5;font-weight:bold">decision</span> <span style="color:#0e84b5;font-weight:bold">d</span>
+        <span style="color:#007020;font-weight:bold">if</span> new_state <span style="color:#007020;font-weight:bold">is</span> viable:
+            sol <span style="color:#666">&lt;-</span> doBacktrack(new_state)
+            <span style="color:#007020;font-weight:bold">if</span> sol <span style="color:#007020;font-weight:bold">is</span> <span style="color:#007020;font-weight:bold">not</span> None:
+                <span style="color:#007020;font-weight:bold">return</span> sol
+    <span style="color:#60a0b0;font-style:italic"># indicate there is no solution</span>
+    <span style="color:#007020;font-weight:bold">return</span> None    
+</code></pre></div><p>Iterative solution</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">doBacktrackIterative</span>(start):
+    stack <span style="color:#666">=</span> [start] 
+
+    <span style="color:#007020;font-weight:bold">while</span> <span style="color:#007020">len</span>(stack) <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
+        current <span style="color:#666">=</span> stack<span style="color:#666">.</span>pop()
+        
+        <span style="color:#007020;font-weight:bold">if</span> current <span style="color:#007020;font-weight:bold">is</span> a solution:
+            <span style="color:#007020;font-weight:bold">yield</span> current
+
+        <span style="color:#007020;font-weight:bold">for</span> decision <span style="color:#007020;font-weight:bold">in</span> possible_decisions(current):
+            new_state <span style="color:#666">&lt;-</span> state obtained <span style="color:#007020;font-weight:bold">from</span> <span style="color:#0e84b5;font-weight:bold">current</span> <span style="color:#0e84b5;font-weight:bold">by</span> <span style="color:#0e84b5;font-weight:bold">making</span> <span style="color:#0e84b5;font-weight:bold">decision</span> <span style="color:#0e84b5;font-weight:bold">d</span>
+            <span style="color:#007020;font-weight:bold">if</span> is_viable(new_state):
+                stack<span style="color:#666">.</span>push(new_state)
+</code></pre></div><h3 id="example-n-queens">Example: n queens</h3>
+<p><strong>Placing n queens on an n x n chess board so no queen can be taken</strong></p>
+<p>We know that we need one queen in every row, and one queen in every column.</p>
+<ul>
+<li><em>Initial state:</em> An empty board</li>
+<li><em>The decision:</em> The decision at stage <em>i</em> is which column to put the queen on row <em>i</em> into.</li>
+<li><em>Rejection criterion:</em> Reject all configurations that do not  allow any queen on any of the lower rows. (Adding more queens to the  board will not prevent this row from being blocked.)</li>
+</ul>
+<p>Here are the states that the backtracking algorithm explores for a 4x4 board. Note that naively there are 4! = 24 <em>complete configurations</em>  with 4 queens on the board, if we place the queens row-by-row, and  avoid reusing a column that is already used. With backtracking, many  configurations are eliminated early. This algorithm shows <em>all</em> solutions, instead of stopping at the first one found.</p>
+<p><img src="/images/2018/backtracking_example.png" alt="Example of backtracking"></p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#60a0b0;font-style:italic"># solution</span>
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">_is_solution</span>(current, n) <span style="color:#666">-&gt;</span> <span style="color:#4070a0">&#34;bool&#34;</span>:
+    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(current) <span style="color:#666">!=</span> n: <span style="color:#007020;font-weight:bold">return</span> False
+    <span style="color:#007020;font-weight:bold">return</span> _is_viable(current, n)
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">_is_viable</span>(current, n) <span style="color:#666">-&gt;</span> <span style="color:#4070a0">&#34;bool&#34;</span>:
+    <span style="color:#4070a0">&#34;for each placed queen check if it hits another&#34;</span>
+    <span style="color:#60a0b0;font-style:italic"># by design we do not need to check columns </span>
+    <span style="color:#60a0b0;font-style:italic"># rows</span>
+    <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(current) <span style="color:#666">!=</span> <span style="color:#007020">len</span>(<span style="color:#007020">set</span>(current)):
+        <span style="color:#007020;font-weight:bold">return</span> False
+    <span style="color:#60a0b0;font-style:italic"># diagonals </span>
+    <span style="color:#007020;font-weight:bold">for</span> i, pos <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(current):
+        <span style="color:#007020;font-weight:bold">for</span> j <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#007020">len</span>(current)):
+            <span style="color:#007020;font-weight:bold">if</span> i <span style="color:#666">!=</span> j:
+                <span style="color:#007020;font-weight:bold">if</span> current[j] <span style="color:#666">==</span> pos <span style="color:#666">+</span> (j<span style="color:#666">-</span>i): <span style="color:#007020;font-weight:bold">return</span> False
+                <span style="color:#007020;font-weight:bold">if</span> current[j] <span style="color:#666">==</span> pos <span style="color:#666">-</span> (j<span style="color:#666">-</span>i): <span style="color:#007020;font-weight:bold">return</span> False
+    <span style="color:#007020;font-weight:bold">return</span> True
+    
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">_possible_decisions</span>(current, n) <span style="color:#666">-&gt;</span> <span style="color:#4070a0">&#34;list&#34;</span>:
+    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">list</span>(<span style="color:#007020">range</span>(<span style="color:#40a070">1</span>,n<span style="color:#666">+</span><span style="color:#40a070">1</span>))
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">_find_queen_positions</span>(n):
+    <span style="color:#4070a0">&#34;generator&#34;</span>
+    stack <span style="color:#666">=</span> [[]]
+    <span style="color:#007020;font-weight:bold">while</span> <span style="color:#007020">len</span>(stack)<span style="color:#666">&gt;</span><span style="color:#40a070">0</span>:
+        current <span style="color:#666">=</span> stack<span style="color:#666">.</span>pop()
+        <span style="color:#007020;font-weight:bold">if</span> _is_solution(current, n):
+            <span style="color:#007020;font-weight:bold">yield</span> current  
+        <span style="color:#007020;font-weight:bold">for</span> d <span style="color:#007020;font-weight:bold">in</span> _possible_decisions(current, n):
+            new_state <span style="color:#666">=</span> current<span style="color:#666">.</span>copy()
+            new_state<span style="color:#666">.</span>append(d)
+            <span style="color:#007020;font-weight:bold">if</span> _is_viable(new_state, n):
+                stack<span style="color:#666">.</span>append(new_state)
+
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">nQueens</span>(n):
+    <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">==</span> <span style="color:#40a070">0</span>: <span style="color:#007020;font-weight:bold">return</span> [[]]
+    <span style="color:#007020;font-weight:bold">if</span> n <span style="color:#666">==</span> <span style="color:#40a070">1</span>: <span style="color:#007020;font-weight:bold">return</span> [[<span style="color:#40a070">1</span>]]
+    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">sorted</span>( <span style="color:#007020">list</span>( _find_queen_positions(n) ) )
+</code></pre></div><h3 id="example-sum-subsets">Example: sum subsets</h3>
+<p>Given a sorted array of integers <code>arr</code> and an integer <code>num</code>, find all possible unique subsets of <code>arr</code> that add up to <code>num</code>. Both the array of subsets and the subsets themselves should be sorted in <a href="keyword://lexicographical-order-for-arrays">lexicographical order</a>.</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">sumSubsets</span>(arr, num):
+    result <span style="color:#666">=</span> <span style="color:#007020">set</span>()
+    
+    <span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">addSumSubsets</span>(arr_i, target, subset):
+        <span style="color:#007020;font-weight:bold">if</span> target <span style="color:#666">==</span> <span style="color:#40a070">0</span>:
+            result<span style="color:#666">.</span>add(subset)
+        <span style="color:#007020;font-weight:bold">elif</span> arr_i <span style="color:#666">&gt;=</span> <span style="color:#007020">len</span>(arr) <span style="color:#007020;font-weight:bold">or</span> target <span style="color:#666">&lt;</span> <span style="color:#40a070">0</span>:
+            <span style="color:#007020;font-weight:bold">return</span>
+        <span style="color:#007020;font-weight:bold">else</span>:
+            n <span style="color:#666">=</span> arr[arr_i]
+            addSumSubsets(arr_i<span style="color:#666">+</span><span style="color:#40a070">1</span>, target<span style="color:#666">-</span>n, subset<span style="color:#666">+</span>(n,))
+            addSumSubsets(arr_i<span style="color:#666">+</span><span style="color:#40a070">1</span>, target, subset)
+    
+    addSumSubsets(<span style="color:#40a070">0</span>, num, ())
+    <span style="color:#007020;font-weight:bold">return</span> <span style="color:#007020">sorted</span>(<span style="color:#007020">list</span>(result))
+</code></pre></div><h1 id="dynamic-programming-2">Dynamic Programming [2]</h1>
+<p>Break down problem into reoccurring smaller problems. Then save results for the reoccurring problem, so it would not be required to solve the same problem more than once. Two common approaches include:</p>
+<ul>
+<li><strong>Bottom-up strategy (iteration):</strong> In this strategy,  you start solving from the smallest subproblem up towards the original  problem. If you’re doing this, you’ll solve all of the subproblems,  thereby solving the larger problem. The cache in bottom-up solutions is usually an array (either one or multi-dimensional).</li>
+<li><strong>Top-down strategy (recursion):</strong> Start solving the identified subproblems. If a subproblem hasn’t been solved yet, solve it  and cache the answer; if it has been solved, return the cached answer.  This is called <em>memoization</em>. The cache in top-down solutions is usually a hash table, binary search tree, or other dynamic data structure.</li>
+</ul>
+<h2 id="generalised-algorithm-1">Generalised algorithm</h2>
+<ol>
+<li>Find a recursive or iterative solution to the problem first (although usually these will have bad run times).</li>
+<li>This helps you identify the subproblems, which are “smaller” instances of the original problem.</li>
+<li>Determine whether the subproblems are overlapping. If they’re  overlapping, a recursive algorithm will be solving the same subproblem  over and over. (If they’re not overlapping and the recursive algorithm  generates new subproblems each time it runs, DP isn’t a good solution;  try a divide-and-conquer solution like merge sort or quick sort  instead.)</li>
+<li>Store/cache the results for every subproblem.</li>
+<li>Once the subproblems have solutions, the original problem is easy to solve!</li>
+</ol>
+<h2 id="example-filling-blocks">Example: filling blocks</h2>
+<p>You have a block with the dimensions <code>4 × n</code>. Find the number of different ways you can fill this block with smaller blocks that have the dimensions <code>1 × 2</code>. You are allowed to rotate the smaller blocks.</p>
+<p>For <code>n = 1</code>, the output should be <code>fillingBlocks(n) = 1</code>. For <code>n = 4</code>, the output should be <code>fillingBlocks(n) = 36</code>.</p>
+<p>The reoccurring subproblem is along the <code>n</code> axis. For each row there are number of combinations ($2^4=16$ in total). We can compute all the possible transitions using the following code</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">state_to_int</span>(state):
+    out <span style="color:#666">=</span> <span style="color:#40a070">0</span>
+    <span style="color:#007020;font-weight:bold">for</span> i, x <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">enumerate</span>(state[::<span style="color:#666">-</span><span style="color:#40a070">1</span>]):
+        out <span style="color:#666">+=</span> x <span style="color:#666">*</span> <span style="color:#40a070">2</span><span style="color:#666">**</span>i
+    <span style="color:#007020;font-weight:bold">return</span> out 
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">from_int_to_state</span>(x):
+    out <span style="color:#666">=</span> <span style="color:#007020">tuple</span>()
+    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">4</span>):
+        out <span style="color:#666">=</span> out <span style="color:#666">+</span> (x <span style="color:#666">%</span> <span style="color:#40a070">2</span> ,)
+        x <span style="color:#666">=</span> x <span style="color:#666">//</span> <span style="color:#40a070">2</span>
+    <span style="color:#007020;font-weight:bold">return</span> out 
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">find_options</span>(state) <span style="color:#666">-&gt;</span> <span style="color:#4070a0">&#34;list of states&#34;</span>:
+    out <span style="color:#666">=</span> []
+    stack <span style="color:#666">=</span> [<span style="color:#007020">tuple</span>()]
+    <span style="color:#007020;font-weight:bold">while</span> <span style="color:#007020">len</span>(stack) <span style="color:#666">&gt;</span> <span style="color:#40a070">0</span>:
+        current <span style="color:#666">=</span> stack<span style="color:#666">.</span>pop()
+        <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(current) <span style="color:#666">==</span> <span style="color:#40a070">4</span>: 
+            out<span style="color:#666">.</span>append(current)
+        <span style="color:#007020;font-weight:bold">else</span>:
+            i <span style="color:#666">=</span> <span style="color:#007020">len</span>(current)
+            <span style="color:#007020;font-weight:bold">if</span> state[i]:
+                stack<span style="color:#666">.</span>append(current <span style="color:#666">+</span> (<span style="color:#40a070">0</span>,))
+            <span style="color:#007020;font-weight:bold">else</span>:
+                stack<span style="color:#666">.</span>append(current <span style="color:#666">+</span> (<span style="color:#40a070">1</span>,))
+                <span style="color:#007020;font-weight:bold">if</span> <span style="color:#007020">len</span>(current) <span style="color:#666">&lt;</span> <span style="color:#40a070">3</span> <span style="color:#007020;font-weight:bold">and</span> state[i<span style="color:#666">+</span><span style="color:#40a070">1</span>] <span style="color:#666">==</span> <span style="color:#40a070">0</span>:
+                    stack<span style="color:#666">.</span>append(current <span style="color:#666">+</span> (<span style="color:#40a070">0</span>,<span style="color:#40a070">0</span>,))
+    <span style="color:#007020;font-weight:bold">return</span> out     
+
+<span style="color:#007020;font-weight:bold">def</span> <span style="color:#06287e">find_vec_transitions</span>() <span style="color:#666">-&gt;</span> <span style="color:#4070a0">&#34;dict[int: list[int]]&#34;</span>:
+    out <span style="color:#666">=</span> {}
+    <span style="color:#007020;font-weight:bold">for</span> i <span style="color:#007020;font-weight:bold">in</span> <span style="color:#007020">range</span>(<span style="color:#40a070">16</span>):
+        res <span style="color:#666">=</span> find_options( from_int_to_state(i) )
+        out[i] <span style="color:#666">=</span> <span style="color:#007020">list</span>(<span style="color:#007020">map</span>(state_to_int, res))
+    <span style="color:#007020;font-weight:bold">return</span> out
+</code></pre></div><p>Where the output gives us the transition from layer <code>n</code> to <code>n+1</code>:</p>
+<div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">find_vec_transitions()
+{<span style="color:#40a070">0</span>: [<span style="color:#40a070">0</span>, <span style="color:#40a070">3</span>, <span style="color:#40a070">9</span>, <span style="color:#40a070">12</span>, <span style="color:#40a070">15</span>], 
+ <span style="color:#40a070">1</span>: [<span style="color:#40a070">1</span>, <span style="color:#40a070">4</span>, <span style="color:#40a070">7</span>], 
+ <span style="color:#40a070">2</span>: [<span style="color:#40a070">8</span>, <span style="color:#40a070">11</span>], 
+ <span style="color:#40a070">3</span>: [<span style="color:#40a070">0</span>, <span style="color:#40a070">3</span>], 
+ <span style="color:#40a070">4</span>: [<span style="color:#40a070">1</span>, <span style="color:#40a070">13</span>], 
+ <span style="color:#40a070">5</span>: [<span style="color:#40a070">5</span>], 
+ <span style="color:#40a070">6</span>: [<span style="color:#40a070">9</span>], 
+ <span style="color:#40a070">7</span>: [<span style="color:#40a070">1</span>], 
+ <span style="color:#40a070">8</span>: [<span style="color:#40a070">2</span>, <span style="color:#40a070">8</span>, <span style="color:#40a070">14</span>], 
+ <span style="color:#40a070">9</span>: [<span style="color:#40a070">0</span>, <span style="color:#40a070">6</span>], 
+ <span style="color:#40a070">10</span>: [<span style="color:#40a070">10</span>], 
+ <span style="color:#40a070">11</span>: [<span style="color:#40a070">2</span>], 
+ <span style="color:#40a070">12</span>: [<span style="color:#40a070">0</span>, <span style="color:#40a070">12</span>], 
+ <span style="color:#40a070">13</span>: [<span style="color:#40a070">4</span>], 
+ <span style="color:#40a070">14</span>: [<span style="color:#40a070">8</span>], 
+ <span style="color:#40a070">15</span>: [<span style="color:#40a070">0</span>]  }
+</code></pre></div><p>Observe that a lot of the states are unreachable. There are only 6 states that can be reached with a start at <code>0</code> state:  <code>{0, 3, 6, 9, 12, 15}</code>. Not need to count the states.</p>
+<h1 id="references">References</h1>
+<ol>
+<li><a href="https://app.codesignal.com/interview-practice/topics/backtracking/tutorial">https://app.codesignal.com/interview-practice/topics/backtracking/tutorial</a></li>
+<li><a href="https://app.codesignal.com/interview-practice/topics/dynamic-programming-basic/tutorial">https://app.codesignal.com/interview-practice/topics/dynamic-programming-basic/tutorial</a></li>
+</ol>
+
+
+		<br>
+<hr class="br-bottom-page">
+		<div class="post-info">
+    <span>Written by</span>
+        Dr Karolis Misiunas
+        <br>
+        <span>on&nbsp;</span><time datetime="2018-10-02 00:00:00 &#43;0000 UTC">October 2, 2018</time>
+</div>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&nbsp;&bull;&nbsp;
+			<time datetime="2021-03-02 18:27:04.663312 &#43;0100 CET m=&#43;0.378945294">2021</time>
+			&nbsp;&bull;&nbsp;
+			<a href="https://github.com/kmisiunas" target="_blank">GitHub</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://www.linkedin.com/in/kmisiunas/" target="_blank">LinkedIn</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://scholar.google.co.uk/citations?user=OMJMkesAAAAJ&hl=en" target="_blank">Google Scholar</a>
+			&nbsp;&bull;&nbsp;
+			</span>
+		</footer>
+
+    </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Learnings &middot; Karolis Misiunas</title>
+
+	
+		<link rel="stylesheet" href="/css/style.css">
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-4830476-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+	
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+
+
+	
+	<link href="/learning/index.xml" rel="alternate" type="application/rss+xml" title="Karolis Misiunas" />
+
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+  				{left: "$$", right: "$$", display: true},
+  				{left: "$", right: "$", display: false},
+			]
+        });
+	});
+	</script>
+	
+</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">
+					<span class="icon-K-medium"></span>
+					Karolis Misiunas</h2>
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="/about/">
+                
+                <span>About</span>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="/">
+                
+                <span>Thought Sketches</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+
+
+        
+
+<main>
+	<div class="catalogue">
+		
+			<a href="https://karolis.misiunas.com/learning/german-language/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">German language grammar A1, A2</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2020-10-03 00:00:00 &#43;0000 UTC" class="catalogue-time">2020-10-03</time>
+            DRAFT: please be considerate and help improve it
+Komparativ    POSITIV KOMPARATIV SUPERLATIV     klein kleiner am kleinsten   schön schöner am schönsten   Exception: im Komparativ     teuer teurer am teuersten   dunkel dunkler am dunkelsten   Exception: One syllable adjectives a,o,u&mdash;&ndash;&gt;ä,ö,ü (more exists)     alt älter am ältesten   jung jünger am jüngsten   kurz kürzer am kürzesten   gross grösser am grössten   Exception: Sonderformen     gut besser am besten   gern lieber am liebsten   viel mehr am meisten   nah (en: no) näher am nächsten   hoch höher am höchsten        Männlich Feminin Neutral Plural     Nomativ der Tischein Tischder neue Tischein neuer Tischneuer Tisch die Lampeeine Lampe die neue Lampeeine neue Lampeneue Lampe das Buchein Buchdas neue Buchein neues Buchneues Buch die Freunde&mdash;die neuen Freunde&mdash;neue Freunde   Akkusativ den Tischeinen Tisch den neuen Tischeinen neuen Tisch neuen Tisch same as above same as above same as above   Dativ dem Tischeinem Tischdem neuen Tischeinem neuen Tischneuem Tisch der Lampeeiner Lampeder neuen Lampeeiner neuen Lampe neuer Lampe dem Bucheinem Buchdem neuen Bucheinem neuen Buchneuem Buch den Freunden&mdash; den neuen Freunden &mdash; neuen Freunden   Genitive des Tischeseines Tisches des neuen Tisches eines neuen Tischesneues Tisches der Lampeeiner Lampeder neuen Lampeeiner neuen Lampe neuer Lampe des Bucheines Buches des neuen Buches eines neuen Buchesneues Buches der Freunde&mdash;der neuen Freunde&mdash;neuer Freunde    
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://karolis.misiunas.com/learning/data-science/plotting/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">Tips on plotting</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2018-10-14 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-10-14</time>
+            Producing clear figures is one of the key skill set.
+DRAFT: please be considerate and help improve it
+Clarity Missing data Missing data should be treated carefully and always focus on the message behind the visualisation [1]. Common methods:
+ Show the gaps Treat it as a category Interpolate  Rules of thumb  Never use piecharts because they are difficult to interpret. We are simply not that great at finding the biggest piece of the pie 😞🍰   Styling Frame with ticks on all edges helps to read out the values because it easy to draw horizontal lines
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://karolis.misiunas.com/learning/cs/system-design/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">System Design</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2018-10-05 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-10-05</time>
+            These questions are designed to see how you would perform with real world programming challenges. If you were asked by your manager to design some system, what would you do?
+Tips:  Communicate: A key goal of system design questions is to evaluate your ability to communicate. Stay engaged with the interviewer. Ask them questions. Be open about the issues of your system. Go broad first Use the whiteboard: Using a whiteboard helps your interviewer follow your proposed design.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://karolis.misiunas.com/learning/cs/algorithms/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">Learning algorithms</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2018-10-02 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-10-02</time>
+            Backtracking [1] Backtracking is a technique used to build up to a solution to a problem incrementally. These &ldquo;partial solutions&rdquo; can be phrased in terms of a sequence of decisions. Once it is determined that a &ldquo;partial solution&rdquo; is not viable (i.e. no subsequent decision can convert it into a solution) then the backtracking algorithm retraces its step to the last viable &ldquo;partial solution&rdquo; and tries again.
+Visualizing the decisions as a tree, backtracking has many of the same properties of depth-first search.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://karolis.misiunas.com/learning/self-hack/cognitive-toolkit/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">Cognitive Toolkit</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2018-06-01 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-06-01</time>
+            Our mind comes with strong biases that we inherit from our biology and society. My plan is to understand these biases and learn how to identify and counter them in my own life. I am slowly revising this list and adding references and examples. The numbering system is from the original list by Peter McIntyre [1].
+(1) Signalling/countersignalling  The idea that an action conveys information to someone about the actor.
+        </p>
+    </div>
+</a>
+
+		
+			<a href="https://karolis.misiunas.com/learning/self-hack/human-universals/" class="catalogue-item">
+    <div>
+        <h1 class="catalogue-title">Donald E. Brown’s List of Human Universals</h1>
+        <div class="catalogue-line"></div>
+
+        <p>
+        	<time datetime="2018-06-01 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-06-01</time>
+            Excerpt From Steven Pinker: “The Blank Slate”
+This list, compiled in 1989 and published in 1991, consists primarily of “surface” universals of behavior and overt language noted by ethnographers. It does not list deeper universals of mental structure that are revealed by theory and experiments. It also omits near-universals (traits that most, but not all, cultures show) and conditional universals (“If a culture has trait A, it always has trait B”).
+        </p>
+    </div>
+</a>
+
+		
+	</div>
+	
+	<div class="pagination">
+		
+		
+	
+		<span>1</span>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&nbsp;&bull;&nbsp;
+			<time datetime="2021-03-02 18:27:04.66581 &#43;0100 CET m=&#43;0.381443858">2021</time>
+			&nbsp;&bull;&nbsp;
+			<a href="https://github.com/kmisiunas" target="_blank">GitHub</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://www.linkedin.com/in/kmisiunas/" target="_blank">LinkedIn</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://scholar.google.co.uk/citations?user=OMJMkesAAAAJ&hl=en" target="_blank">Google Scholar</a>
+			&nbsp;&bull;&nbsp;
+			</span>
+		</footer>
+
+    </body>
+</html>

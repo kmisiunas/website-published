@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Tips on plotting &middot; Karolis Misiunas</title>
+
+	
+		<link rel="stylesheet" href="/css/style.css">
+	
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-4830476-3', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+	
+	<link rel="icon" type="image/png" href="/images/favicon.png">
+
+
+	
+	<link href="" rel="alternate" type="application/rss+xml" title="Karolis Misiunas" />
+
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+            delimiters: [
+  				{left: "$$", right: "$$", display: true},
+  				{left: "$", right: "$", display: false},
+			]
+        });
+	});
+	</script>
+	
+</head>
+
+    <body>
+        		<nav class="nav">
+			<div class="nav-container">
+				<a href="/">
+					<h2 class="nav-title">
+					<span class="icon-K-medium"></span>
+					Karolis Misiunas</h2>
+				</a>
+				<ul>
+    
+    
+        <li>
+            <a href="/about/">
+                
+                <span>About</span>
+                
+            </a>
+        </li>
+    
+        <li>
+            <a href="/">
+                
+                <span>Thought Sketches</span>
+                
+            </a>
+        </li>
+    
+</ul>
+			</div>
+		</nav>
+
+
+<div class="toc">
+  
+
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#missing-data">Missing data</a></li>
+    <li><a href="#rules-of-thumb">Rules of thumb</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#axes-labels">Axes labels</a></li>
+    <li><a href="#fonts">Fonts</a></li>
+    <li><a href="#ticks">Ticks</a></li>
+    <li><a href="#colors">Colors</a>
+      <ul>
+        <li><a href="#color-gradients">Color gradients</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#wolfram-mathematica">Wolfram Mathematica</a></li>
+    <li><a href="#python-matplotlibpyplot">Python matplotlib.pyplot</a></li>
+    <li><a href="#illustrator--inkscape">Illustrator / Inkscape</a></li>
+  </ul>
+</nav>
+
+  <ul class="toc-top">
+    <li><a href="#">&#10098; Back to top &#10099;</a></li>
+  </ul>
+</div>
+
+
+        
+
+<main>
+	<div class="post">
+		<h1 class="post-title">Tips on plotting</h1>
+<div class="post-line"></div>
+
+		
+
+		<p>Producing clear figures is one of the key skill set.</p>
+<p><strong>DRAFT: please be considerate and help improve it</strong></p>
+<h1 id="clarity">Clarity</h1>
+<h2 id="missing-data">Missing data</h2>
+<p>Missing data should be treated carefully and always focus on the message behind the visualisation [1]. Common methods:</p>
+<ol>
+<li>Show the gaps</li>
+<li>Treat it as a category</li>
+<li>Interpolate</li>
+</ol>
+<h2 id="rules-of-thumb">Rules of thumb</h2>
+<ul>
+<li><strong>Never use piecharts</strong> because they are <a href="https://www.businessinsider.com/pie-charts-are-the-worst-2013-6?IR=T">difficult to interpret</a>. We are simply not that great at finding the biggest piece of the pie 😞🍰</li>
+</ul>
+<hr>
+<h1 id="styling">Styling</h1>
+<p><strong>Frame</strong> with ticks on all edges helps to read out the values because it easy to draw horizontal lines</p>
+<h2 id="axes-labels">Axes labels</h2>
+<p><strong>Naming</strong></p>
+<p><strong>Units</strong> should be always present and unambiguous. SI unit convention suggests using a divider [2], as in $k_B T / J$  or $v / ms^{-1}$. But I find this notation a little confusing since the unit could be interpreted as a symbol  ($J$ is also a current density in physics). Therefore, I prefer using brackets to indicate units as suggested by <a href="https://journals.aps.org/authors/axis-labels-and-scales-on-graphs-h18">APS guidelines</a> [3]. For example:</p>
+<figure>
+    <img src="/images/2018/plotting_axis_units.svg"
+         alt="(Left) Units are shown in the brackets. (Right) the brackets are omitted for unit-less quantities."/> <figcaption>
+            <p>(Left) Units are shown in the brackets. (Right) the brackets are omitted for unit-less quantities.</p>
+        </figcaption>
+</figure>
+
+<p><strong>Separator</strong> between description and mathematical symbol introduces clarity. Lately, I use comma followed by few spaces. This visually separates the two while avoiding ambiguity introduces by other symbols. For example, a dash separator could be interpreted as a minus sign, thus causing confusion.</p>
+<h2 id="fonts">Fonts</h2>
+<p><strong>Typeface</strong> should be easy to read on the screen and in printed media. My personal choice is sans-serif fonts, such as Helvetica or Myriad Pro.</p>
+<p><strong>Font size</strong> is sometimes a tricky matter because figure often is rescaled after placing it on a website, slides, or an article. As rule of thumb, the font <em>must</em> be large enough to see without straining your eyes. In a presentation, people in the back row must be able to read all the labels. In a paper, I normally go for size 7pt for small panels and size 9pt for large panels.</p>
+<h2 id="ticks">Ticks</h2>
+<h2 id="colors">Colors</h2>
+<p>Adding a vivid color can guide the reader on specific features, but it also can also introduce biases during interpretation. This is highly undesirable and thus should be used with care. In addition, a small fraction of the people are <a href="https://en.wikipedia.org/wiki/Color_blindness">colourblind</a>, and are unable to tell some colors apart. For these two reasons, I often use</p>
+<table>
+<thead>
+<tr>
+<th>Color</th>
+<th>R, G, B</th>
+<th>HEX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>0.35, 0.43, 0.99</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="color-gradients">Color gradients</h3>
+<p>[8]</p>
+<hr>
+<h1 id="software">Software</h1>
+<p>The best tool for producing plots should be easily integrated with your analysis pipeline. I will share some notes about the software that I use and what I liked about it.</p>
+<h2 id="wolfram-mathematica">Wolfram Mathematica</h2>
+<h2 id="python-matplotlibpyplot">Python matplotlib.pyplot</h2>
+<p>Python has many plotting libraries (<a href="https://speakerdeck.com/jakevdp/pythons-visualization-landscape-pycon-2017">overview</a>), but I normally stick with matplotlib because it supports raster image output, vector graphics (PDF or SVG), and detailed customisation. Unfortunately, the default looks of matplotlib plots is not great, but it can easily be customised to look amazing.</p>
+<p>Additional recourses:</p>
+<ul>
+<li><a href="http://seaborn.pydata.org/">Seaborn</a> - styling extension with few useful plotting extension</li>
+<li><a href="http://pythonhosted.org/calmap/">Calendar heatmap library</a></li>
+<li><a href="http://pbpython.com/effective-matplotlib.html">Effective matplotlib</a> article</li>
+<li><a href="http://nbviewer.jupyter.org/github/WeatherGod/AnatomyOfMatplotlib/blob/master/AnatomyOfMatplotlib-Part1-Figures_Subplots_and_layouts.ipynb">Anatomy Of Matplotlib</a> article</li>
+</ul>
+<h2 id="illustrator--inkscape">Illustrator / Inkscape</h2>
+<p>For the most important figures, that go into articles or presentations, I prefer composing the figure and adding annotations in a vector graphics editor. This allows the precise control over the font sizes, positions, and other annotations can be placed with an ease. For example, this is a figure from my paper where teal color indicates items added after plotting:</p>
+<figure>
+    <img src="/images/2018/vector_software_example.svg"
+         alt="Example panel, where everything in teal was added using vector graphics editor." width="70%"/> <figcaption>
+            <p>Example panel, where everything in teal was added using vector graphics editor.</p>
+        </figcaption>
+</figure>
+
+<p>Notice that I keep the data panels untouched and only add annotations on top. This avoids accidental distortion of the data. I export the finished figure using PDF or SVG formats (with sRGB color space).</p>
+<hr>
+<h1 id="acknowledgements">Acknowledgements</h1>
+<hr>
+<h1 id="references">References</h1>
+<ol>
+<li><a href="https://flowingdata.com/2018/01/30/visualizing-incomplete-and-missing-data/">“Visualizing Incomplete and Missing Data”</a> by FlowingData</li>
+<li><a href="https://doi.org/10.1088/0026-1394/31/6/001">Boer, J. de. (1995). On the History of Quantity Calculus and the International System. <em>Metrologia</em>, <em>31</em>(6), 405–429.</a></li>
+<li><a href="https://journals.aps.org/authors/axis-labels-and-scales-on-graphs-h18">https://journals.aps.org/authors/axis-labels-and-scales-on-graphs-h18</a></li>
+<li><a href="http://blogs.nature.com/onyourwavelength/2018/07/18/heuristics-for-better-figures/">Nature blog: Heuristics for better figures</a> (todo)</li>
+<li><a href="https://blog.datawrapper.de/colorguide/">&ldquo;Your Friendly Guide to Colors in Data Visualisation”</a> (<a href="https://news.ycombinator.com/item?id=17660640">HN</a><a href="https://news.ycombinator.com/item?id=17660640"> comments</a>) (todo)</li>
+<li><a href="https://github.com/frankMilde/interesting-reads/blob/master/ibm-research__why-should-engineers-and-scientists-be-worried-about-color.pdf">“Why should engineers and scientists be worried about color”</a> by IBM research (todo)</li>
+<li>“<a href="https://www.nature.com/articles/nmeth0810-573">Points of view: Color coding</a>” in Nature Methods</li>
+<li><a href="https://www.nature.com/articles/nmeth.2134">“Points of view: Mapping quantitative data to color”</a> in Nature Methods</li>
+<li>“<a href="https://www.nature.com/documents/NRJs-guide-to-preparing-final-artwork.pdf">GUIDE TO PREPARING FINAL ARTWORK</a>” by Nature</li>
+</ol>
+
+
+		<br>
+<hr class="br-bottom-page">
+		<div class="post-info">
+    <span>Written by</span>
+        Dr Karolis Misiunas
+        <br>
+        <span>on&nbsp;</span><time datetime="2018-10-14 00:00:00 &#43;0000 UTC">October 14, 2018</time>
+</div>
+	</div>
+</main>
+
+
+        		<footer>
+			<span>
+			&nbsp;&bull;&nbsp;
+			<time datetime="2021-03-02 18:27:04.621338 &#43;0100 CET m=&#43;0.336972610">2021</time>
+			&nbsp;&bull;&nbsp;
+			<a href="https://github.com/kmisiunas" target="_blank">GitHub</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://www.linkedin.com/in/kmisiunas/" target="_blank">LinkedIn</a>
+			&nbsp;&bull;&nbsp;
+			<a href="https://scholar.google.co.uk/citations?user=OMJMkesAAAAJ&hl=en" target="_blank">Google Scholar</a>
+			&nbsp;&bull;&nbsp;
+			</span>
+		</footer>
+
+    </body>
+</html>
