@@ -1,192 +1,38 @@
-<!DOCTYPE html>
-<html lang="en-gb">
-    <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>Optimising commute time &middot; Karolis Misiunas</title>
-
-	
-		<link rel="stylesheet" href="/css/style.css">
-	
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQHW68SQQH"></script>
-      <script>
-        var doNotTrack = false;
-        if ( true ) {
-          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
-          var doNotTrack = (dnt == "1" || dnt == "yes");
-        }
-        if (!doNotTrack) {
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-QQHW68SQQH');
-        }
-      </script>
-
-	
-	<link rel="icon" type="image/png" href="/images/favicon.png">
-
-
-	
-	<link href="" rel="alternate" type="application/rss+xml" title="Karolis Misiunas" />
-
-	
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
-	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"></script>
-	<script>
-	document.addEventListener("DOMContentLoaded", function() {
-        renderMathInElement(document.body, {
-            delimiters: [
-  				{left: "$$", right: "$$", display: true},
-  				{left: "$", right: "$", display: false},
-			]
-        });
-	});
-	</script>
-	
-</head>
-
-    <body>
-        		<nav class="nav">
-			<div class="nav-container">
-				<a href="/">
-					<h2 class="nav-title">
-					<span class="icon-K-medium"></span>
-					Karolis Misiunas</h2>
-				</a>
-				<ul>
-    
-    
-        <li>
-            <a href="/about/">
-                
-                <span>About</span>
-                
-            </a>
-        </li>
-    
-        <li>
-            <a href="/">
-                
-                <span>Thought Sketches</span>
-                
-            </a>
-        </li>
-    
-</ul>
-			</div>
-		</nav>
-
-
-
-        
-
-<main>
-	<div class="post">
-		<h1 class="post-title">Optimising commute time</h1>
-<div class="post-line"></div>
-
-		
-
-		<p>I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.</p>
-<h2 id="method">Method</h2>
-<p>I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work. We could gather this data manually by using <a href="https://maps.google.com">maps.google.com</a>, but Google conveniently offers computerised access to this data via API (for free!):</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># python3</span>
-</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">import</span> <span style="color:#0e84b5;font-weight:bold">googlemaps</span>
-</span></span><span style="display:flex;"><span>gmaps <span style="color:#666">=</span> googlemaps<span style="color:#666">.</span>Client(key<span style="color:#666">=</span><span style="color:#4070a0">&#34;private_API_key_that_you_get_from_Google_cloud&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># (...helper code...)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>job_loc <span style="color:#666">=</span> parse_coordinates( gmaps<span style="color:#666">.</span>geocode(
-</span></span><span style="display:flex;"><span>    <span style="color:#4070a0">&#34;Google Building 110, Brandschenkestrasse 110, 8002 Zürich&#34;</span>) )
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#007020">print</span>(<span style="color:#4070a0">&#34;Job location:&#34;</span>, job_loc)
-</span></span><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># =&gt; Job location: (47.3653139, 8.524474699999999)</span>
-</span></span></code></pre></div><p>These are the coordinates for my new job at Google. Now, I want to estimate commute times to these coordinates from different places in the city. Function <code>distance_matrix</code> allows getting the time for a specific mode of transport. We query this function for many points on a rectangular grid,</p>
-<div class="highlight"><pre tabindex="0" style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#60a0b0;font-style:italic"># (...helper code...)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>res <span style="color:#666">=</span> [] <span style="color:#60a0b0;font-style:italic"># store results </span>
-</span></span><span style="display:flex;"><span>    
-</span></span><span style="display:flex;"><span><span style="color:#007020;font-weight:bold">for</span> dx <span style="color:#007020;font-weight:bold">in</span> np<span style="color:#666">.</span>arange(<span style="color:#666">-</span><span style="color:#40a070">40</span>, <span style="color:#40a070">41</span>)<span style="color:#666">*</span>dLon<span style="color:#666">*</span><span style="color:#40a070">500</span>: <span style="color:#60a0b0;font-style:italic"># grid in Longitude</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#007020;font-weight:bold">for</span> dy <span style="color:#007020;font-weight:bold">in</span> np<span style="color:#666">.</span>arange(<span style="color:#666">-</span><span style="color:#40a070">40</span>, <span style="color:#40a070">41</span>)<span style="color:#666">*</span>dLat<span style="color:#666">*</span><span style="color:#40a070">500</span>: <span style="color:#60a0b0;font-style:italic"># grid in Latitude </span>
-</span></span><span style="display:flex;"><span>        x, y <span style="color:#666">=</span> job_loc[<span style="color:#40a070">1</span>] <span style="color:#666">+</span> dx, job_loc[<span style="color:#40a070">0</span>] <span style="color:#666">+</span> dy <span style="color:#60a0b0;font-style:italic"># from coordinates</span>
-</span></span><span style="display:flex;"><span>        distance <span style="color:#666">=</span> gmaps<span style="color:#666">.</span>distance_matrix(
-</span></span><span style="display:flex;"><span>             origins <span style="color:#666">=</span> (y,x),
-</span></span><span style="display:flex;"><span>             destinations <span style="color:#666">=</span> job_loc,
-</span></span><span style="display:flex;"><span>             mode <span style="color:#666">=</span> <span style="color:#4070a0">&#34;transit&#34;</span>,  <span style="color:#60a0b0;font-style:italic"># or &#34;bicycling&#34;</span>
-</span></span><span style="display:flex;"><span>             units <span style="color:#666">=</span> <span style="color:#4070a0">&#34;metric&#34;</span>,  
-</span></span><span style="display:flex;"><span>             arrival_time <span style="color:#666">=</span> 
-</span></span><span style="display:flex;"><span>               parser<span style="color:#666">.</span>parse(<span style="color:#4070a0">&#34;2018-12-20T09:00:00+01&#34;</span>), <span style="color:#60a0b0;font-style:italic"># date must be in the future</span>
-</span></span><span style="display:flex;"><span>         )
-</span></span><span style="display:flex;"><span>         res<span style="color:#666">.</span>append(_parse_distance_matrix(distance))
-</span></span></code></pre></div><p>Of course, we could do this manually, but it would take us a long time since there are over 6000 points on this grid. Let the computer do the work 🤖</p>
-<h2 id="commute-times">Commute times</h2>
-<p>Figure 1 shows the commute times using public transport. Green color indicates shorter commute times, while red indicates longer commute times. The contour lines indicate zones where the commute is within 20 minutes, 30 minutes, and 40 minutes.</p>
-<figure><img src="/images/2018/distance_to_work_public.jpg"
-			alt="Figure 1. Public transport commute. Dashed line shows 20min commute zone; solid line is 30min zone; and solid red line is 40min zone." width="799"><figcaption>
-			<p>Figure 1. Public transport commute. Dashed line shows 20min commute zone; solid line is 30min zone; and solid red line is 40min zone.</p>
-		</figcaption>
-</figure>
-
-<p>The data clearly suggest that living closer to work reduces the commute time; no surprise here. However, the commute times are not uniformly distributed around the office, with 20 minute zone extending a lot further south than in any other direction. This is because there are faster train lines going south that allow shorter commute times. This was not obvious to me before starting the analysis and it helps to find the ideal location.</p>
-<p>A small technical note on transport in water. Google Maps just teleport you to the closest shore and estimates the commute time from there. Thus, the commute times in water do not reflect of owing a house-boat but are just an artefact of getting data off Google Maps API.</p>
-<p>Next, I would like to cycle to work if the weather permits. Using the same method, I get commute times shown in Figure 2.</p>
-<figure><img src="/images/2018/distance_to_work_cycling.jpg"
-			alt="Figure 2. Cycling commute. Dashed line shows 20min commute zone; solid line is with 30min; and solid red line is within 40min commute." width="799"><figcaption>
-			<p>Figure 2. Cycling commute. Dashed line shows 20min commute zone; solid line is with 30min; and solid red line is within 40min commute.</p>
-		</figcaption>
-</figure>
-
-<p>Clearly, the short commute zones are more symmetrically distributed around my office location. The 20 minute zone is also larger than for the public transport, presumably because There is no walking to and from bus or train stations.</p>
-<p>Combining data from both figures, it seems the ideal locations include: old town, Wiedlikon, Aussersihl, Enge, Wollishofen, and even Leimbach.</p>
-<h2 id="night-transport">Night transport</h2>
-<p>Occasionally I want to take the public transport in the late evening after seeing friends or some event. I will use the same method to estimate transport options from the old town of Zurich to different locations that I consider living in. This time I fix the leaving time to 15 minutes before midnight on Saturday. For me, these conditions reflect a common scenario where I still prefer using public transport.</p>
-<figure><img src="/images/2018/late_night_distance_from_city.jpg"
-			alt="Figure 3. Public transport at night from the city centre. Dashed line shows 20min travel zone; solid line is 30min zone; and solid red line is 40min zone." width="799"><figcaption>
-			<p>Figure 3. Public transport at night from the city centre. Dashed line shows 20min travel zone; solid line is 30min zone; and solid red line is 40min zone.</p>
-		</figcaption>
-</figure>
-
-<p>Figure 3 shows the time it takes to get home from the city centre around midnight. The 20 min travel zone is larger than in the commute estimate because here we are computing the distance from Zürich HB - the main train station. This data suggests that it is straightforward to get home from most places in the city.</p>
-<h2 id="try-it-yourself">Try it yourself</h2>
-<p>You will need:</p>
-<ul>
-<li>Google Maps API key. It is free for a small number of queries, but you will have to leave a credit/debit card with Google Could. You can deactivate the account after the analysis.</li>
-<li>Python3 (via anaconda). Also free.</li>
-<li>Wolfram Mathematica for visualisations. This tool is unfortunately not free, but you can try using it on Wolfram Cloud which is free for moderate usage. Also, similar visualisations can be made in python, but I have not done it.</li>
-</ul>
-<p>The code is on <a href="https://github.com/kmisiunas/where-to-live/">GitHub</a>. Hope it empowers your next relocation. Send me thanks if it makes a big difference.</p>
-<hr>
-<p>This article and the opinions in it are my own and not an official statement from my employer.</p>
-
-
-		<br>
-<hr class="br-bottom-page">
-		<div class="post-info">
-    <span>Written by</span>
-        Dr Karolis Misiunas
-        <br>
-        <span>on&nbsp;</span><time datetime="2018-12-17 00:00:00 &#43;0000 UTC">December 17, 2018</time>
-</div>
-	</div>
-</main>
-
-
-        		<footer>
-			<span>
-			&nbsp;&bull;&nbsp;
-			<time datetime="2026-08-22 00:44:47.109333 &#43;0200 CEST m=&#43;0.057498168">2026</time>
-			&nbsp;&bull;&nbsp;
-			<a href="https://github.com/kmisiunas" target="_blank">GitHub</a>
-			&nbsp;&bull;&nbsp;
-			<a href="https://www.linkedin.com/in/kmisiunas/" target="_blank">LinkedIn</a>
-			&nbsp;&bull;&nbsp;
-			<a href="https://scholar.google.co.uk/citations?user=OMJMkesAAAAJ&hl=en" target="_blank">Google Scholar</a>
-			&nbsp;&bull;&nbsp;
-			</span>
-		</footer>
-
-    </body>
-</html>
+<!doctype html><html lang=en-gb><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Optimising commute time &#183; Karolis Misiunas</title><link rel=stylesheet href=/css/style.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-QQHW68SQQH"></script><script>var doNotTrack=!1,dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes";if(!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-QQHW68SQQH")}</script><link rel=icon type=image/png href=/images/favicon.png><link href rel=alternate type=application/rss+xml title="Karolis Misiunas"><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css integrity=sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js integrity=sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O crossorigin=anonymous></script><script defer src=https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js integrity=sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF crossorigin=anonymous></script><script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}]})})</script></head><body><nav class=nav><div class=nav-container><a href=/><h2 class=nav-title><span class=icon-K-medium></span>
+Karolis Misiunas</h2></a><ul><li><a href=/about/><span>About</span></a></li><li><a href=/><span>Thought Sketches</span></a></li></ul></div></nav><main><div class=post><h1 class=post-title>Optimising commute time</h1><div class=post-line></div><p>I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.</p><h2 id=method>Method</h2><p>I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work. We could gather this data manually by using <a href=https://maps.google.com>maps.google.com</a>, but Google conveniently offers computerised access to this data via API (for free!):</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#60a0b0;font-style:italic># python3</span>
+</span></span><span style=display:flex><span><span style=color:#007020;font-weight:700>import</span> <span style=color:#0e84b5;font-weight:700>googlemaps</span>
+</span></span><span style=display:flex><span>gmaps <span style=color:#666>=</span> googlemaps<span style=color:#666>.</span>Client(key<span style=color:#666>=</span><span style=color:#4070a0>&#34;private_API_key_that_you_get_from_Google_cloud&#34;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#60a0b0;font-style:italic># (...helper code...)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>job_loc <span style=color:#666>=</span> parse_coordinates( gmaps<span style=color:#666>.</span>geocode(
+</span></span><span style=display:flex><span>    <span style=color:#4070a0>&#34;Google Building 110, Brandschenkestrasse 110, 8002 Zürich&#34;</span>) )
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#007020>print</span>(<span style=color:#4070a0>&#34;Job location:&#34;</span>, job_loc)
+</span></span><span style=display:flex><span><span style=color:#60a0b0;font-style:italic># =&gt; Job location: (47.3653139, 8.524474699999999)</span>
+</span></span></code></pre></div><p>These are the coordinates for my new job at Google. Now, I want to estimate commute times to these coordinates from different places in the city. Function <code>distance_matrix</code> allows getting the time for a specific mode of transport. We query this function for many points on a rectangular grid,</p><div class=highlight><pre tabindex=0 style=background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#60a0b0;font-style:italic># (...helper code...)</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>res <span style=color:#666>=</span> [] <span style=color:#60a0b0;font-style:italic># store results </span>
+</span></span><span style=display:flex><span>    
+</span></span><span style=display:flex><span><span style=color:#007020;font-weight:700>for</span> dx <span style=color:#007020;font-weight:700>in</span> np<span style=color:#666>.</span>arange(<span style=color:#666>-</span><span style=color:#40a070>40</span>, <span style=color:#40a070>41</span>)<span style=color:#666>*</span>dLon<span style=color:#666>*</span><span style=color:#40a070>500</span>: <span style=color:#60a0b0;font-style:italic># grid in Longitude</span>
+</span></span><span style=display:flex><span>    <span style=color:#007020;font-weight:700>for</span> dy <span style=color:#007020;font-weight:700>in</span> np<span style=color:#666>.</span>arange(<span style=color:#666>-</span><span style=color:#40a070>40</span>, <span style=color:#40a070>41</span>)<span style=color:#666>*</span>dLat<span style=color:#666>*</span><span style=color:#40a070>500</span>: <span style=color:#60a0b0;font-style:italic># grid in Latitude </span>
+</span></span><span style=display:flex><span>        x, y <span style=color:#666>=</span> job_loc[<span style=color:#40a070>1</span>] <span style=color:#666>+</span> dx, job_loc[<span style=color:#40a070>0</span>] <span style=color:#666>+</span> dy <span style=color:#60a0b0;font-style:italic># from coordinates</span>
+</span></span><span style=display:flex><span>        distance <span style=color:#666>=</span> gmaps<span style=color:#666>.</span>distance_matrix(
+</span></span><span style=display:flex><span>             origins <span style=color:#666>=</span> (y,x),
+</span></span><span style=display:flex><span>             destinations <span style=color:#666>=</span> job_loc,
+</span></span><span style=display:flex><span>             mode <span style=color:#666>=</span> <span style=color:#4070a0>&#34;transit&#34;</span>,  <span style=color:#60a0b0;font-style:italic># or &#34;bicycling&#34;</span>
+</span></span><span style=display:flex><span>             units <span style=color:#666>=</span> <span style=color:#4070a0>&#34;metric&#34;</span>,  
+</span></span><span style=display:flex><span>             arrival_time <span style=color:#666>=</span> 
+</span></span><span style=display:flex><span>               parser<span style=color:#666>.</span>parse(<span style=color:#4070a0>&#34;2018-12-20T09:00:00+01&#34;</span>), <span style=color:#60a0b0;font-style:italic># date must be in the future</span>
+</span></span><span style=display:flex><span>         )
+</span></span><span style=display:flex><span>         res<span style=color:#666>.</span>append(_parse_distance_matrix(distance))
+</span></span></code></pre></div><p>Of course, we could do this manually, but it would take us a long time since there are over 6000 points on this grid. Let the computer do the work 🤖</p><h2 id=commute-times>Commute times</h2><p>Figure 1 shows the commute times using public transport. Green color indicates shorter commute times, while red indicates longer commute times. The contour lines indicate zones where the commute is within 20 minutes, 30 minutes, and 40 minutes.</p><figure><img src=/images/2018/distance_to_work_public.jpg alt="Figure 1. Public transport commute. Dashed line shows 20min commute zone; solid line is 30min zone; and solid red line is 40min zone." width=799><figcaption><p>Figure 1. Public transport commute. Dashed line shows 20min commute zone; solid line is 30min zone; and solid red line is 40min zone.</p></figcaption></figure><p>The data clearly suggest that living closer to work reduces the commute time; no surprise here. However, the commute times are not uniformly distributed around the office, with 20 minute zone extending a lot further south than in any other direction. This is because there are faster train lines going south that allow shorter commute times. This was not obvious to me before starting the analysis and it helps to find the ideal location.</p><p>A small technical note on transport in water. Google Maps just teleport you to the closest shore and estimates the commute time from there. Thus, the commute times in water do not reflect of owing a house-boat but are just an artefact of getting data off Google Maps API.</p><p>Next, I would like to cycle to work if the weather permits. Using the same method, I get commute times shown in Figure 2.</p><figure><img src=/images/2018/distance_to_work_cycling.jpg alt="Figure 2. Cycling commute. Dashed line shows 20min commute zone; solid line is with 30min; and solid red line is within 40min commute." width=799><figcaption><p>Figure 2. Cycling commute. Dashed line shows 20min commute zone; solid line is with 30min; and solid red line is within 40min commute.</p></figcaption></figure><p>Clearly, the short commute zones are more symmetrically distributed around my office location. The 20 minute zone is also larger than for the public transport, presumably because There is no walking to and from bus or train stations.</p><p>Combining data from both figures, it seems the ideal locations include: old town, Wiedlikon, Aussersihl, Enge, Wollishofen, and even Leimbach.</p><h2 id=night-transport>Night transport</h2><p>Occasionally I want to take the public transport in the late evening after seeing friends or some event. I will use the same method to estimate transport options from the old town of Zurich to different locations that I consider living in. This time I fix the leaving time to 15 minutes before midnight on Saturday. For me, these conditions reflect a common scenario where I still prefer using public transport.</p><figure><img src=/images/2018/late_night_distance_from_city.jpg alt="Figure 3. Public transport at night from the city centre. Dashed line shows 20min travel zone; solid line is 30min zone; and solid red line is 40min zone." width=799><figcaption><p>Figure 3. Public transport at night from the city centre. Dashed line shows 20min travel zone; solid line is 30min zone; and solid red line is 40min zone.</p></figcaption></figure><p>Figure 3 shows the time it takes to get home from the city centre around midnight. The 20 min travel zone is larger than in the commute estimate because here we are computing the distance from Zürich HB - the main train station. This data suggests that it is straightforward to get home from most places in the city.</p><h2 id=try-it-yourself>Try it yourself</h2><p>You will need:</p><ul><li>Google Maps API key. It is free for a small number of queries, but you will have to leave a credit/debit card with Google Could. You can deactivate the account after the analysis.</li><li>Python3 (via anaconda). Also free.</li><li>Wolfram Mathematica for visualisations. This tool is unfortunately not free, but you can try using it on Wolfram Cloud which is free for moderate usage. Also, similar visualisations can be made in python, but I have not done it.</li></ul><p>The code is on <a href=https://github.com/kmisiunas/where-to-live/>GitHub</a>. Hope it empowers your next relocation. Send me thanks if it makes a big difference.</p><hr><p>This article and the opinions in it are my own and not an official statement from my employer.</p><br><hr class=br-bottom-page><div class=post-info><span>Written by</span>
+Dr Karolis Misiunas<br><span>on&nbsp;</span><time datetime="2018-12-17 00:00:00 +0000 UTC">December 17, 2018</time></div></div></main><footer><span>&nbsp;&bull;&nbsp;
+<time datetime="2026-08-22 00:46:10.455087 +0200 CEST m=+0.058272793">2026</time>
+&nbsp;&bull;&nbsp;
+<a href=https://github.com/kmisiunas target=_blank>GitHub</a>
+&nbsp;&bull;&nbsp;
+<a href=https://www.linkedin.com/in/kmisiunas/ target=_blank>LinkedIn</a>
+&nbsp;&bull;&nbsp;
+<a href="https://scholar.google.co.uk/citations?user=OMJMkesAAAAJ&hl=en" target=_blank>Google Scholar</a>
+&nbsp;&bull;&nbsp;</span></footer></body></html>
