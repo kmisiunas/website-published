@@ -1,74 +1,52 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posts on Karolis Misiunas</title>
-    <link>https://karolis.misiunas.com/posts/</link>
-    <description>Recent content in Posts on Karolis Misiunas</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    <lastBuildDate>Mon, 17 Dec 2018 00:00:00 +0000</lastBuildDate><atom:link href="https://karolis.misiunas.com/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Optimising commute time</title>
-      <link>https://karolis.misiunas.com/posts/optimising-commute-time/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/optimising-commute-time/</guid>
-      <description>I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.
-Method I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work.</description>
-    </item>
-    
-    <item>
-      <title>QuipuNet: single-molecule analysis using deep-learning</title>
-      <link>https://karolis.misiunas.com/posts/quipunet/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/quipunet/</guid>
-      <description>Abstract. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing.</description>
-    </item>
-    
-    <item>
-      <title>PhD thesis</title>
-      <link>https://karolis.misiunas.com/posts/thesis/</link>
-      <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/thesis/</guid>
-      <description>&amp;ldquo;Hydrodynamic interactions in narrow channels&amp;rdquo; PhD supervisor: Ulrich F. Keyser
-Examiners: Daan Frenkel, Lydéric Bocquet
-Abstract. Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels.</description>
-    </item>
-    
-    <item>
-      <title>Forbes 30 under 30</title>
-      <link>https://karolis.misiunas.com/posts/forbes-30-under-30/</link>
-      <pubDate>Thu, 28 Jan 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/forbes-30-under-30/</guid>
-      <description>Forbes magazine has picked me ’30 under 30′ in category of Science and healthcare, Europe. This was a pleasant surprise that I am very grateful for. You can read more about it: Forbes article or Churchill college article.</description>
-    </item>
-    
-    <item>
-      <title>Nondecaying particle interactions</title>
-      <link>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</link>
-      <pubDate>Sat, 19 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</guid>
-      <description>We have discovered a particle-particle interactions that have distance-independent strength. These are rare in physics, thus I am excited about this result. Learn more about the experiment from the paper or watch the video below
-  Published in Physical Review Letters, 2015.
- An excerpt form a comment in Nature Physics:
- These somewhat surprising results, the authors show, follow from simple theory. Imagine that one particle moves, stirring up a fluid flow.</description>
-    </item>
-    
-    <item>
-      <title>Sweeper Craft - android game</title>
-      <link>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</link>
-      <pubDate>Sun, 29 Jan 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</guid>
-      <description>Game of minesweeper with mathematical and logical elements set in a theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!
-Direct download from website : http://sweepercraft.com/
-There was an article published about the game: http://kotaku.com/minecraft-sweeper/
-Update: the game is no longer actively maintained, but I am happy that over 1&#39;000&#39;000 people downloaded this game.</description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Posts on Karolis Misiunas</title>
+		<link>https://karolis.misiunas.com/posts/</link>
+		<description>Recent content in Posts on Karolis Misiunas</description>
+		<generator>Hugo</generator>
+		<language>en-gb</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 17 Dec 2018 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://karolis.misiunas.com/posts/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Optimising commute time</title>
+				<link>https://karolis.misiunas.com/posts/optimising-commute-time/</link>
+				<pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/optimising-commute-time/</guid>
+				<description>&lt;p&gt;I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.&lt;/p&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;p&gt;I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work. We could gather this data manually by using &lt;a href=&#34;https://maps.google.com&#34;&gt;maps.google.com&lt;/a&gt;, but Google conveniently offers computerised access to this data via API (for free!):&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>QuipuNet: single-molecule analysis using deep-learning</title>
+				<link>https://karolis.misiunas.com/posts/quipunet/</link>
+				<pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/quipunet/</guid>
+				<description>&lt;figure&gt;&lt;img src=&#34;https://karolis.misiunas.com/images/2018/quipunet_toc_figure.png&#34; width=&#34;500&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;Abstract&lt;/strong&gt;. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing. The neural network learns to classify translocation events with greater accuracy than previously possible, while also increasing the number of analyzable events by a factor of 5. Our results demonstrate that deep learning can achieve significant improvements in single molecule nanopore detection with potential applications in rapid diagnostics.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>PhD thesis</title>
+				<link>https://karolis.misiunas.com/posts/thesis/</link>
+				<pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/thesis/</guid>
+				<description>&lt;h1 id=&#34;hydrodynamic-interactions-in-narrow-channels&#34;&gt;&amp;ldquo;Hydrodynamic interactions in narrow channels&amp;rdquo;&lt;/h1&gt;&#xA;&lt;p&gt;PhD supervisor: Ulrich F. Keyser&lt;/p&gt;&#xA;&lt;p&gt;Examiners: Daan Frenkel, Lydéric Bocquet&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Abstract.&lt;/strong&gt; Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels. Such interactions are ubiquitous in biological and technological systems. Here I confine multiple particles undergoing Brownian motion in narrow, microfluidic channels and study their coupling through hydrodynamic interactions. Our experiments show that the hydrodynamic particle-particle interactions are distance-independent in these channels. We also show that these interactions affect actively propelled particles via electrophoresis or gravity, resulting in non-linear transport phenomena. These findings are of fundamental importance for understanding transport of dense mixtures of particles or molecules through finite length, water-filled channels or pore networks.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Nondecaying particle interactions</title>
+				<link>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</link>
+				<pubDate>Sat, 19 Sep 2015 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</guid>
+				<description>&lt;p&gt;We have &lt;a href=&#34;http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.038301&#34;&gt;discovered&lt;/a&gt; a particle-particle interactions  that have distance-independent strength. These are rare in physics, thus I am excited about this result. Learn more about the experiment from the &lt;a href=&#34;http://arxiv.org/abs/1503.06048&#34;&gt;paper&lt;/a&gt; or watch the video below&lt;/p&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;&#x9;&#x9;&#x9;&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/rbbxQ8xZQaA?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;&#x9;&#x9;&lt;/div&gt;&#xA;&#xA;&lt;br&gt;&#xA;&lt;p&gt;Published in &lt;a href=&#34;https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.038301&#34;&gt;Physical Review Letters&lt;/a&gt;, 2015.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;An excerpt form a &lt;a href=&#34;https://www.nature.com/articles/nphys3429&#34;&gt;comment in Nature Physics&lt;/a&gt;:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Sweeper Craft - android game</title>
+				<link>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</link>
+				<pubDate>Sun, 29 Jan 2012 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</guid>
+				<description>&lt;figure class=&#34;fig-left&#34;&gt;&lt;img src=&#34;https://karolis.misiunas.com/images/2012/mcs-icon.png&#34; width=&#34;110px&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Game of minesweeper with mathematical and logical elements set in a  theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!&lt;/p&gt;&#xA;&lt;p&gt;Direct download from website : &lt;a href=&#34;http://sweepercraft.com/&#34;&gt;http://sweepercraft.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;There was an article published about the game:&#xA;&lt;a href=&#34;http://kotaku.com/minecraft-sweeper/&#34;&gt;http://kotaku.com/minecraft-sweeper/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Update: the game is no longer actively maintained, but I am happy that over 1&#39;000&#39;000 people downloaded this game. Thank you for all the positive feedback!&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-gb">
     <head>
-	<meta name="generator" content="Hugo 0.81.0" />
+	<meta name="generator" content="Hugo 0.165.0">
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="description" content="Blog">
@@ -11,19 +11,20 @@
 	
 		<link rel="stylesheet" href="/css/style.css">
 	
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-	ga('create', 'UA-4830476-3', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-QQHW68SQQH"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-QQHW68SQQH');
+        }
+      </script>
 
 	
 	<link rel="icon" type="image/png" href="/images/favicon.png">
@@ -95,7 +96,8 @@ if (!doNotTrack) {
         <p>
         	<time datetime="2018-12-17 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-12-17</time>
             I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.
-Method I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work.
+Method I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work. We could gather this data manually by using maps.google.com, but Google conveniently offers computerised access to this data via API (for free!):
+
         </p>
     </div>
 </a>
@@ -108,7 +110,8 @@ Method I gather data from Google Maps since it has public transport schedules. T
 
         <p>
         	<time datetime="2018-06-07 00:00:00 &#43;0000 UTC" class="catalogue-time">2018-06-07</time>
-            Abstract. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing.
+             Abstract. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing. The neural network learns to classify translocation events with greater accuracy than previously possible, while also increasing the number of analyzable events by a factor of 5. Our results demonstrate that deep learning can achieve significant improvements in single molecule nanopore detection with potential applications in rapid diagnostics.
+
         </p>
     </div>
 </a>
@@ -123,20 +126,8 @@ Method I gather data from Google Maps since it has public transport schedules. T
         	<time datetime="2016-05-29 00:00:00 &#43;0000 UTC" class="catalogue-time">2016-05-29</time>
             &ldquo;Hydrodynamic interactions in narrow channels&rdquo; PhD supervisor: Ulrich F. Keyser
 Examiners: Daan Frenkel, Lydéric Bocquet
-Abstract. Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels.
-        </p>
-    </div>
-</a>
+Abstract. Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels. Such interactions are ubiquitous in biological and technological systems. Here I confine multiple particles undergoing Brownian motion in narrow, microfluidic channels and study their coupling through hydrodynamic interactions. Our experiments show that the hydrodynamic particle-particle interactions are distance-independent in these channels. We also show that these interactions affect actively propelled particles via electrophoresis or gravity, resulting in non-linear transport phenomena. These findings are of fundamental importance for understanding transport of dense mixtures of particles or molecules through finite length, water-filled channels or pore networks.
 
-		
-			<a href="https://karolis.misiunas.com/posts/forbes-30-under-30/" class="catalogue-item">
-    <div>
-        <h1 class="catalogue-title">Forbes 30 under 30</h1>
-        <div class="catalogue-line"></div>
-
-        <p>
-        	<time datetime="2016-01-28 00:00:00 &#43;0000 UTC" class="catalogue-time">2016-01-28</time>
-            Forbes magazine has picked me ’30 under 30′ in category of Science and healthcare, Europe. This was a pleasant surprise that I am very grateful for. You can read more about it: Forbes article or Churchill college article.
         </p>
     </div>
 </a>
@@ -150,9 +141,9 @@ Abstract. Particle-particle interactions are of paramount importance in every mu
         <p>
         	<time datetime="2015-09-19 00:00:00 &#43;0000 UTC" class="catalogue-time">2015-09-19</time>
             We have discovered a particle-particle interactions that have distance-independent strength. These are rare in physics, thus I am excited about this result. Learn more about the experiment from the paper or watch the video below
-  Published in Physical Review Letters, 2015.
- An excerpt form a comment in Nature Physics:
- These somewhat surprising results, the authors show, follow from simple theory. Imagine that one particle moves, stirring up a fluid flow.
+Published in Physical Review Letters, 2015.
+An excerpt form a comment in Nature Physics:
+
         </p>
     </div>
 </a>
@@ -165,10 +156,11 @@ Abstract. Particle-particle interactions are of paramount importance in every mu
 
         <p>
         	<time datetime="2012-01-29 00:00:00 &#43;0000 UTC" class="catalogue-time">2012-01-29</time>
-            Game of minesweeper with mathematical and logical elements set in a theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!
+             Game of minesweeper with mathematical and logical elements set in a theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!
 Direct download from website : http://sweepercraft.com/
 There was an article published about the game: http://kotaku.com/minecraft-sweeper/
-Update: the game is no longer actively maintained, but I am happy that over 1'000'000 people downloaded this game.
+Update: the game is no longer actively maintained, but I am happy that over 1'000'000 people downloaded this game. Thank you for all the positive feedback!
+
         </p>
     </div>
 </a>
@@ -188,7 +180,7 @@ Update: the game is no longer actively maintained, but I am happy that over 1'00
         		<footer>
 			<span>
 			&nbsp;&bull;&nbsp;
-			<time datetime="2021-03-02 18:27:04.654479 &#43;0100 CET m=&#43;0.370112394">2021</time>
+			<time datetime="2026-08-22 00:44:47.109428 &#43;0200 CEST m=&#43;0.057593459">2026</time>
 			&nbsp;&bull;&nbsp;
 			<a href="https://github.com/kmisiunas" target="_blank">GitHub</a>
 			&nbsp;&bull;&nbsp;

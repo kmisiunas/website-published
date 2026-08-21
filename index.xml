@@ -1,165 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Karolis Misiunas</title>
-    <link>https://karolis.misiunas.com/</link>
-    <description>Recent content on Karolis Misiunas</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-gb</language>
-    <lastBuildDate>Sat, 03 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://karolis.misiunas.com/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>German language grammar A1, A2</title>
-      <link>https://karolis.misiunas.com/learning/german-language/</link>
-      <pubDate>Sat, 03 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/german-language/</guid>
-      <description>DRAFT: please be considerate and help improve it
-Komparativ    POSITIV KOMPARATIV SUPERLATIV     klein kleiner am kleinsten   schön schöner am schönsten   Exception: im Komparativ     teuer teurer am teuersten   dunkel dunkler am dunkelsten   Exception: One syllable adjectives a,o,u&amp;mdash;&amp;ndash;&amp;gt;ä,ö,ü (more exists)     alt älter am ältesten   jung jünger am jüngsten   kurz kürzer am kürzesten   gross grösser am grössten   Exception: Sonderformen     gut besser am besten   gern lieber am liebsten   viel mehr am meisten   nah (en: no) näher am nächsten   hoch höher am höchsten        Männlich Feminin Neutral Plural     Nomativ der Tischein Tischder neue Tischein neuer Tischneuer Tisch die Lampeeine Lampe die neue Lampeeine neue Lampeneue Lampe das Buchein Buchdas neue Buchein neues Buchneues Buch die Freunde&amp;mdash;die neuen Freunde&amp;mdash;neue Freunde   Akkusativ den Tischeinen Tisch den neuen Tischeinen neuen Tisch neuen Tisch same as above same as above same as above   Dativ dem Tischeinem Tischdem neuen Tischeinem neuen Tischneuem Tisch der Lampeeiner Lampeder neuen Lampeeiner neuen Lampe neuer Lampe dem Bucheinem Buchdem neuen Bucheinem neuen Buchneuem Buch den Freunden&amp;mdash; den neuen Freunden &amp;mdash; neuen Freunden   Genitive des Tischeseines Tisches des neuen Tisches eines neuen Tischesneues Tisches der Lampeeiner Lampeder neuen Lampeeiner neuen Lampe neuer Lampe des Bucheines Buches des neuen Buches eines neuen Buchesneues Buches der Freunde&amp;mdash;der neuen Freunde&amp;mdash;neuer Freunde    </description>
-    </item>
-    
-    <item>
-      <title>Happy Birthday</title>
-      <link>https://karolis.misiunas.com/happy-birthday/</link>
-      <pubDate>Fri, 28 Feb 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/happy-birthday/</guid>
-      <description>Meike&amp;rsquo;s birthday is coming. Since we are still stuck at home and cannot celebrate together, I would like to make a collective happy birthday video for Meike.
-This will take you about 5-10 minutes.
-This page will guide you step-by-step how to record a synchronised video of the happy birthday song. I will collect these videos, make a video collage and share it with Meike on her birthday.
-Step 1: Prepare We will be singing &amp;ldquo;Happy Birthday to you&amp;rdquo; song.</description>
-    </item>
-    
-    <item>
-      <title>Optimising commute time</title>
-      <link>https://karolis.misiunas.com/posts/optimising-commute-time/</link>
-      <pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/optimising-commute-time/</guid>
-      <description>I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.
-Method I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work.</description>
-    </item>
-    
-    <item>
-      <title>Tips on plotting</title>
-      <link>https://karolis.misiunas.com/learning/data-science/plotting/</link>
-      <pubDate>Sun, 14 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/data-science/plotting/</guid>
-      <description>Producing clear figures is one of the key skill set.
-DRAFT: please be considerate and help improve it
-Clarity Missing data Missing data should be treated carefully and always focus on the message behind the visualisation [1]. Common methods:
- Show the gaps Treat it as a category Interpolate  Rules of thumb  Never use piecharts because they are difficult to interpret. We are simply not that great at finding the biggest piece of the pie 😞🍰   Styling Frame with ticks on all edges helps to read out the values because it easy to draw horizontal lines</description>
-    </item>
-    
-    <item>
-      <title>System Design</title>
-      <link>https://karolis.misiunas.com/learning/cs/system-design/</link>
-      <pubDate>Fri, 05 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/cs/system-design/</guid>
-      <description>These questions are designed to see how you would perform with real world programming challenges. If you were asked by your manager to design some system, what would you do?
-Tips:  Communicate: A key goal of system design questions is to evaluate your ability to communicate. Stay engaged with the interviewer. Ask them questions. Be open about the issues of your system. Go broad first Use the whiteboard: Using a whiteboard helps your interviewer follow your proposed design.</description>
-    </item>
-    
-    <item>
-      <title>Learning algorithms</title>
-      <link>https://karolis.misiunas.com/learning/cs/algorithms/</link>
-      <pubDate>Tue, 02 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/cs/algorithms/</guid>
-      <description>Backtracking [1] Backtracking is a technique used to build up to a solution to a problem incrementally. These &amp;ldquo;partial solutions&amp;rdquo; can be phrased in terms of a sequence of decisions. Once it is determined that a &amp;ldquo;partial solution&amp;rdquo; is not viable (i.e. no subsequent decision can convert it into a solution) then the backtracking algorithm retraces its step to the last viable &amp;ldquo;partial solution&amp;rdquo; and tries again.
-Visualizing the decisions as a tree, backtracking has many of the same properties of depth-first search.</description>
-    </item>
-    
-    <item>
-      <title>About me</title>
-      <link>https://karolis.misiunas.com/about/</link>
-      <pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/about/</guid>
-      <description>I am Googler with fondness for hiking, sailing, and philosophy.
-Research Interests   Generative Adversarial Networks
-  Applied deep learning
-  Nano-sensors
-  Physics of stochastic motion
-  Other Interests   Entrepreneurship
-  Quantified-Self
-  Contact Primary email k.misiunas (at) gmail.com
-For private email please use kmisiunas (at) pm.me (public key)</description>
-    </item>
-    
-    <item>
-      <title>QuipuNet: single-molecule analysis using deep-learning</title>
-      <link>https://karolis.misiunas.com/posts/quipunet/</link>
-      <pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/quipunet/</guid>
-      <description>Abstract. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing.</description>
-    </item>
-    
-    <item>
-      <title>Cognitive Toolkit</title>
-      <link>https://karolis.misiunas.com/learning/self-hack/cognitive-toolkit/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/self-hack/cognitive-toolkit/</guid>
-      <description>Our mind comes with strong biases that we inherit from our biology and society. My plan is to understand these biases and learn how to identify and counter them in my own life. I am slowly revising this list and adding references and examples. The numbering system is from the original list by Peter McIntyre [1].
-(1) Signalling/countersignalling  The idea that an action conveys information to someone about the actor.</description>
-    </item>
-    
-    <item>
-      <title>Donald E. Brown’s List of Human Universals</title>
-      <link>https://karolis.misiunas.com/learning/self-hack/human-universals/</link>
-      <pubDate>Fri, 01 Jun 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/learning/self-hack/human-universals/</guid>
-      <description>Excerpt From Steven Pinker: “The Blank Slate”
-This list, compiled in 1989 and published in 1991, consists primarily of “surface” universals of behavior and overt language noted by ethnographers. It does not list deeper universals of mental structure that are revealed by theory and experiments. It also omits near-universals (traits that most, but not all, cultures show) and conditional universals (“If a culture has trait A, it always has trait B”).</description>
-    </item>
-    
-    <item>
-      <title>PhD thesis</title>
-      <link>https://karolis.misiunas.com/posts/thesis/</link>
-      <pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/thesis/</guid>
-      <description>&amp;ldquo;Hydrodynamic interactions in narrow channels&amp;rdquo; PhD supervisor: Ulrich F. Keyser
-Examiners: Daan Frenkel, Lydéric Bocquet
-Abstract. Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels.</description>
-    </item>
-    
-    <item>
-      <title>Forbes 30 under 30</title>
-      <link>https://karolis.misiunas.com/posts/forbes-30-under-30/</link>
-      <pubDate>Thu, 28 Jan 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/forbes-30-under-30/</guid>
-      <description>Forbes magazine has picked me ’30 under 30′ in category of Science and healthcare, Europe. This was a pleasant surprise that I am very grateful for. You can read more about it: Forbes article or Churchill college article.</description>
-    </item>
-    
-    <item>
-      <title>Nondecaying particle interactions</title>
-      <link>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</link>
-      <pubDate>Sat, 19 Sep 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</guid>
-      <description>We have discovered a particle-particle interactions that have distance-independent strength. These are rare in physics, thus I am excited about this result. Learn more about the experiment from the paper or watch the video below
-  Published in Physical Review Letters, 2015.
- An excerpt form a comment in Nature Physics:
- These somewhat surprising results, the authors show, follow from simple theory. Imagine that one particle moves, stirring up a fluid flow.</description>
-    </item>
-    
-    <item>
-      <title>Sweeper Craft - android game</title>
-      <link>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</link>
-      <pubDate>Sun, 29 Jan 2012 00:00:00 +0000</pubDate>
-      
-      <guid>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</guid>
-      <description>Game of minesweeper with mathematical and logical elements set in a theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!
-Direct download from website : http://sweepercraft.com/
-There was an article published about the game: http://kotaku.com/minecraft-sweeper/
-Update: the game is no longer actively maintained, but I am happy that over 1&#39;000&#39;000 people downloaded this game.</description>
-    </item>
-    
-  </channel>
+	<channel>
+		<title>Karolis Misiunas</title>
+		<link>https://karolis.misiunas.com/</link>
+		<description>Recent content on Karolis Misiunas</description>
+		<generator>Hugo</generator>
+		<language>en-gb</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 17 Dec 2018 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://karolis.misiunas.com/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Optimising commute time</title>
+				<link>https://karolis.misiunas.com/posts/optimising-commute-time/</link>
+				<pubDate>Mon, 17 Dec 2018 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/optimising-commute-time/</guid>
+				<description>&lt;p&gt;I have recently moved to Zürich and now am facing a dilemma: where should I live? Having a short commute and opportunity to cycle are particularly important to me. Here, I solve this problem by analysing commute data and thus finding optimal locations to live.&lt;/p&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;p&gt;I gather data from Google Maps since it has public transport schedules. The idea is to measure the commute time from every street in Zurich to my work. We could gather this data manually by using &lt;a href=&#34;https://maps.google.com&#34;&gt;maps.google.com&lt;/a&gt;, but Google conveniently offers computerised access to this data via API (for free!):&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>About me</title>
+				<link>https://karolis.misiunas.com/about/</link>
+				<pubDate>Mon, 01 Oct 2018 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/about/</guid>
+				<description>&lt;p&gt;&lt;img src=&#34;https://karolis.misiunas.com/images/2018/karolis-avatar.jpg&#34; alt=&#34;Karolis avatar&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;I am &lt;a href=&#34;https://en.wiktionary.org/wiki/Googler&#34;&gt;Googler&lt;/a&gt; with fondness for hiking, sailing, and philosophy.&lt;/p&gt;&#xA;&lt;h4 id=&#34;research-interests&#34;&gt;Research Interests&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Generative Adversarial Networks&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Applied deep learning&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Nano-sensors&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Physics of stochastic motion&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;other-interests&#34;&gt;Other Interests&lt;/h4&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Entrepreneurship&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Quantified-Self&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;contact&#34;&gt;Contact&lt;/h2&gt;&#xA;&lt;p&gt;Primary email &lt;strong&gt;k.misiunas (at) gmail.com&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;For private email please use &lt;strong&gt;kmisiunas (at) pm.me&lt;/strong&gt; (&lt;a href=&#34;https://karolis.misiunas.com/publickey.k.misiunas@protonmail.ch.asc&#34;&gt;public key&lt;/a&gt;)&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>QuipuNet: single-molecule analysis using deep-learning</title>
+				<link>https://karolis.misiunas.com/posts/quipunet/</link>
+				<pubDate>Thu, 07 Jun 2018 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/quipunet/</guid>
+				<description>&lt;figure&gt;&lt;img src=&#34;https://karolis.misiunas.com/images/2018/quipunet_toc_figure.png&#34; width=&#34;500&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&lt;strong&gt;Abstract&lt;/strong&gt;. Nanopore sensing is a versatile technique for the analysis of molecules on the single-molecule level. However, extracting information from data with established algorithms usually requires time-consuming checks by an experienced researcher due to inherent variability of solid-state nanopores. Here, we develop a convolutional neural network (CNN) for the fully automated extraction of information from the time-series signals obtained by nanopore sensors. In our demonstration, we use a previously published data set on multiplexed single-molecule protein sensing. The neural network learns to classify translocation events with greater accuracy than previously possible, while also increasing the number of analyzable events by a factor of 5. Our results demonstrate that deep learning can achieve significant improvements in single molecule nanopore detection with potential applications in rapid diagnostics.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>PhD thesis</title>
+				<link>https://karolis.misiunas.com/posts/thesis/</link>
+				<pubDate>Sun, 29 May 2016 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/thesis/</guid>
+				<description>&lt;h1 id=&#34;hydrodynamic-interactions-in-narrow-channels&#34;&gt;&amp;ldquo;Hydrodynamic interactions in narrow channels&amp;rdquo;&lt;/h1&gt;&#xA;&lt;p&gt;PhD supervisor: Ulrich F. Keyser&lt;/p&gt;&#xA;&lt;p&gt;Examiners: Daan Frenkel, Lydéric Bocquet&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Abstract.&lt;/strong&gt; Particle-particle interactions are of paramount importance in every multi-body system as they determine the collective behaviour and coupling strength. Many well-known interactions like electro-static, van der Waals or screened Coulomb, decay exponentially or with negative powers of the particle spacing r. Similarly, hydrodynamic interactions between particles undergoing Brownian motion decay as 1/r in bulk, and are assumed to decay in small channels. Such interactions are ubiquitous in biological and technological systems. Here I confine multiple particles undergoing Brownian motion in narrow, microfluidic channels and study their coupling through hydrodynamic interactions. Our experiments show that the hydrodynamic particle-particle interactions are distance-independent in these channels. We also show that these interactions affect actively propelled particles via electrophoresis or gravity, resulting in non-linear transport phenomena. These findings are of fundamental importance for understanding transport of dense mixtures of particles or molecules through finite length, water-filled channels or pore networks.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Nondecaying particle interactions</title>
+				<link>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</link>
+				<pubDate>Sat, 19 Sep 2015 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/nondecaying-particle-interaction/</guid>
+				<description>&lt;p&gt;We have &lt;a href=&#34;http://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.038301&#34;&gt;discovered&lt;/a&gt; a particle-particle interactions  that have distance-independent strength. These are rare in physics, thus I am excited about this result. Learn more about the experiment from the &lt;a href=&#34;http://arxiv.org/abs/1503.06048&#34;&gt;paper&lt;/a&gt; or watch the video below&lt;/p&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;&#x9;&#x9;&#x9;&lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube.com/embed/rbbxQ8xZQaA?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;&#x9;&#x9;&lt;/div&gt;&#xA;&#xA;&lt;br&gt;&#xA;&lt;p&gt;Published in &lt;a href=&#34;https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.115.038301&#34;&gt;Physical Review Letters&lt;/a&gt;, 2015.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;An excerpt form a &lt;a href=&#34;https://www.nature.com/articles/nphys3429&#34;&gt;comment in Nature Physics&lt;/a&gt;:&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Sweeper Craft - android game</title>
+				<link>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</link>
+				<pubDate>Sun, 29 Jan 2012 00:00:00 +0000</pubDate>
+				<guid>https://karolis.misiunas.com/posts/game-minecraft-sweeper/</guid>
+				<description>&lt;figure class=&#34;fig-left&#34;&gt;&lt;img src=&#34;https://karolis.misiunas.com/images/2012/mcs-icon.png&#34; width=&#34;110px&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;Game of minesweeper with mathematical and logical elements set in a  theme and modes that resemble MineCraft for Android OS! The rules are like minesweeper, but with more adventure: multiple livesand hidden treasures to discover. The game also has virtually unlimited map size – uncommon among minesweeper games. We hope you like it!&lt;/p&gt;&#xA;&lt;p&gt;Direct download from website : &lt;a href=&#34;http://sweepercraft.com/&#34;&gt;http://sweepercraft.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;There was an article published about the game:&#xA;&lt;a href=&#34;http://kotaku.com/minecraft-sweeper/&#34;&gt;http://kotaku.com/minecraft-sweeper/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Update: the game is no longer actively maintained, but I am happy that over 1&#39;000&#39;000 people downloaded this game. Thank you for all the positive feedback!&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>
