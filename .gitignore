@@ -1,1 +1,19 @@
 .DS_Store
+
+# Unused Font Awesome distribution, copied through from static/
+/svgs/
+/webfonts/
+/css/all*.css
+/css/brands*.css
+/css/fontawesome*.css
+/css/regular*.css
+/css/solid*.css
+/css/svg-with-js*.css
+/css/v4-shims*.css
+/js/all*.js
+/js/brands*.js
+/js/conflict-detection*.js
+/js/fontawesome*.js
+/js/regular*.js
+/js/solid*.js
+/js/v4-shims*.js
